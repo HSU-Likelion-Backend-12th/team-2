@@ -138,4 +138,43 @@
 - ✨**GlobalExceptionHandler**
   - 특정 유형의 예외를 처리하는 클래스
     - @ControllerAdvice : 이 클래스가 전역 예외 처리를 담당함을 나타냄
-    - @ExceptionHandler : 처리할 예외 클래스 작
+    - @ExceptionHandler : 처리할 예외 클래스 작성
+
+## 4. 회원가입 API
+- ✨**User 엔티티 작성하기**
+   - @Entity : 클래스를 JPA 엔티티로 표시한다. 즉, 이 클래스의 인스턴스는 데이터베이스 테이블의 해당 레코드에 매핑된다.
+   - @Table(name = "USERS") : 이 엔티티가 매핑된 테이블의 세부 정보를 지정. 이 경우에는 백그라운드 데이터베이스의 "USERS" 테이블에 엔티티가 매핑되었음을 지정
+   - @Getter : getter 메소드를 자동으로 생성
+   - @NoArgsConstrustor : 매개변수가 없는 생성자 생성
+   - @AllArgsConstructor : 모든 필드에 대한 매개변수가 있는 생성자 생성
+   - @Builder : 빌더 패턴을 생성하여 많은 필드가 있는 객체의 인스턴스화를 더 쉽게 함.
+   - @Id : 해당 필드를 엔티티의 기본 키로 표시
+   - @GeneratedValue(strategy = Generation.IDENTITY) : 기본 키 값을 어떻게 생성할지를 지정함. 이 경우에는 데이터베이스가 식별 열을 사용하여 기본 키 값을 자동으로 생성함.
+   - Column (name ="id") : 필드가 데이터베이스 테이블 열에 매핑되는 세부 정보를 지정함. 이 경우에은 자바 클래스의 "id" 필드가 "USERS" 테이블의 "Id"열에 해당함을 지정
+
+- ✨**Repository**
+  - JPARepository 인터페이스
+    - Spring Data JPA 프레임워크에서 제공하는 인터페이스
+    - 기본적인 CRUD(create, Read, Update, Delete) 작업을 수행하는 메서드를 제공
+    - 사용 방법 : extends JPARepository<T,ID>
+  - UserRepository 인터페이스는 JPARepository 인터페이스를 상속
+    -@Repository : Spring 데이터 엑세스 계층에서 데이터베이스 작업을 처리하는데 사용되는 클래스에 적용됨. 
+
+- ✨**Service 계층**
+  - 비즈니스 로직이 포함된 계층
+  - @Service : 해당 클래스가 Spring의 서비스 컴포넌트임을 나타냄. Spring은 이 어노테이션이 지정된 클래스를 스캔하여 해당 클래스의 인스턴스를 생성하고 애플리케이션 컨텍스트 빈으로 등록함.
+  - @RequiredArgsConstructor : lombok 라이브러리에서 제공하는 어노테이션으로 final로 선언된 필드를 가진 생성자가 자동으로 생성됨.
+  -  
+ 
+- ✨**Controller 계층**
+  - @RestController : 해당 클래스가 RESTful 웹 서비스의 컨트롤러임을 나타냄. 이 클래스는 HTTP 요청을 처리하고 응답을 생성하는 역할을 함. @Controller와 @ResponseBody 어노테이션을 합친 것과 같은 역할을 함.
+  - @RequestMapping : 컨트롤러의 메소드가 처리할 요청 URL의 기본 경로를 지정함. 
+  - @RequierdArgsConstructor : lombok 라이브러리에서 제공하는 어노테이션으로, 필드에 대한 생성자가 자동으로 생성된다.
+
+- ✨**BaseEntity 작성하기**
+  - 데이터 생성 일시, 수정 일시와 같이 모든 테이블에 공통적으로 있는 필드들을 정의
+  - @MappedSuperclass : 해당 클래스가 JPA 엔티티가 아니라고 표시. 그러나 이 클래스의 필드는 하위 엔티티 클래스에서 공유되어 매핑됨. 즉 이 클래스의 필드는 다른 엔티티 클래스에서 상속될 수 있음.
+  - @EntityListener : 엔티티의 변경 사항을 모니터링하고 자동으로 생성 및 수정 시간을 관리하기 위해 사용.
+  - @CreateDate : 이 어노테이션이 지정된 필드는 엔티티가 생성될 때의 시간을 자동으로 저장함.
+  - @LastModifiedData : 이 어노테이션이 지정된 필드는 엔티티가 마지막으로 수정된 시간을 자동으로 저장함.
+  - @EnableJpaAuditing(Main 클래스에)  : 자동 감사를 활성화하는 어노테이션, 이 어노테이션을 구성 클래스에 적용하면 엔티티의 생성일자 및 수정일자를 자동으로 관리할 수 있음. 
