@@ -30,6 +30,7 @@
     - 스키마 : 데이터베이스 구조를 정의하는 논리적인 컨테이너, 하나의 데이터베이스에는 여러 개의        스키마가 존재, 각 스키마는 그 자체의 이름 공간을 가지며, 해당 스키마 내의 테이블, 뷰, 인텍        스 같은 객체를 포함할 수 있음
    
     - 테이블 : 데이터베이스에서 실제로 데이터가 저장되는 곳
+
    
 ## 2. Controller 와 CustomApiResponse
 - ✨**TestController**
@@ -106,3 +107,35 @@
                 .build();
            ```
          
+
+
+## 3. CustomErrorController와 GlobalExceptionHandler 
+- ✨**CustomErrorController**
+  - 존재하지 않는 api 경로로 요청을 보냈을 경우에는 기본적으로
+    ```
+     {
+        "timestamp" : "2024-05-04~~~~",
+        "status" : 404,
+        "error" : "Not Found",
+        "path" : "/hello"
+      }
+    ```
+    이런 형식으로 스프링부트의 기본 응답 형식으로 응답한다.
+    - 하지만 CustomApiResponse 클래스를 활용하여 어떤 오류인지에 따라 알맞은 에러 메세지와 상태        가 갖춰진 형식으로 응답이 오도록 할 수 있다.
+  - ErrorContorller 인터페이스를 구현
+   - @RestController : RESTful 웹 서비스의 컨트롤러임을 나타냄
+   - @RequestMapping("/error") : /error 경로로 들어오는 요청을 이 클래스의 메소드로 매핑
+  - handleError 메소드 : HttpServletRequest : Spring MVC에서 요청에 대한 정보를 전달하는 데 사용되는 클래스
+  - Object status = requset.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+      :현재 요청에서 발생한 오류 코드 받아올 수 있음
+  - 실습으로 구현해본 error 응답 형식
+    - 400 BAD_REQUEST (잘못된 요청)
+    - 403 FORBIDDEN (접근 금지)
+    - 404 NOT_FOUND (요청 경로를 찾을 수 없음)
+    - 405 METHOD_NOT_ALLOWED (허용되지 않은 메소드)
+    - 500 INTERNAL_SERVER_ERROR (내부 서버 오류)
+
+- ✨**GlobalExceptionHandler**
+  - 특정 유형의 예외를 처리하는 클래스
+    - @ControllerAdvice : 이 클래스가 전역 예외 처리를 담당함을 나타냄
+    - @ExceptionHandler : 처리할 예외 클래스 작
