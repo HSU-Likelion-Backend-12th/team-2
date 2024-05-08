@@ -25,8 +25,11 @@
 ## Controller와 CustomApiResponse
 ### TestController
 #### Server와 Client
-클라이언트가 요청을 보내면 서버는 그에 맞는 응답을 제공한다.
+클라이언트가 요청을 보내면 서버는 그에 맞는 응답을 제공한다. <br>
 요청이 들어오면 Controller에서 그 경로를 찾고 Service 레이어로 넘어가서 Repository 계층과 DB 계층을 이용해 적절히 데이터를 구성한 다음, 클라이언트로 응답을 내려준다.
+
+##### 1. 응답 Body 구성한다 <br> 2. 응답 Body를 ResponseEnity에 넣는다
+
 #### 사용 어노테이션
 @RestController : 이 어노테이션이 부착된 클래스는 restful 웹서비스의 컨트롤러이다. <br>
 @RequsestMapping("/경로") : 해당 메소드가 지정된 경로에 요청을 처리하는데 사용됨을 명시한다. <br>
@@ -46,8 +49,18 @@ ResponseEntity : HTTP 응답을 나타내는 객체. 응답의 상태 코드, �
   - @Builder
   - @NoArgsConstructor
   - @AllArgsConstructor
-
+    
+#### 사용 방법
+1. new로 생성 <br>
+  `SimpleDto dto = new SimpleDto("example", "example@naver.com");`
+2. builder로 생성<br>
+  `SimpleDto dto = SimpleDto.builder()
+                .userId("example")
+                .email("example@naver.com")
+                .build();`
+   
 <br><br>
+
 ## CustomErrorController와 GlobalExceptionHandler
 ### CustomErrorController
 #### 프로젝트 실행 후 존재하지 않는 API 경로로 요청을 보내면? 
