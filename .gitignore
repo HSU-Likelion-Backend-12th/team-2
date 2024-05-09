@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 HELP.md
 .gradle
 build/
@@ -39,10 +38,6 @@ out/
 
 # Created by https://www.toptal.com/developers/gitignore/api/java,intellij,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=java,intellij,windows
-=======
-# Created by https://www.toptal.com/developers/gitignore/api/java,intellij
-# Edit at https://www.toptal.com/developers/gitignore?templates=java,intellij
->>>>>>> f0bec547cd3f67fc4d4990d7d52095d89e3e9809
 
 ### Intellij ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
@@ -183,7 +178,6 @@ fabric.properties
 hs_err_pid*
 replay_pid*
 
-<<<<<<< HEAD
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
@@ -211,6 +205,3 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,windows
-=======
-# End of https://www.toptal.com/developers/gitignore/api/java,intellij
->>>>>>> f0bec547cd3f67fc4d4990d7d52095d89e3e9809
