@@ -7,7 +7,7 @@ import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import spring.springcorebasic.member.MemberService;
 import spring.springcorebasic.member.MemberServiceImpl;
-import spring.springcorebasic.order.AppConfig;
+import spring.springcorebasic.AppConfig;
 
 public class ApplicationContextBasicFindTest{
 

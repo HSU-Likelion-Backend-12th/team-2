@@ -1,4 +1,4 @@
-package spring.springcorebasic.order;
+package spring.springcorebasic;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;

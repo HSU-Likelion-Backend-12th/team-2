@@ -2,7 +2,7 @@
 //
 //import org.assertj.core.api.Assertions;
 //import org.junit.jupiter.api.Test;
-//import spring.springcorebasic.order.AppConfig;
+//import spring.springcorebasic.AppConfig;
 //
 //public class MemberServiceTest {
 //
