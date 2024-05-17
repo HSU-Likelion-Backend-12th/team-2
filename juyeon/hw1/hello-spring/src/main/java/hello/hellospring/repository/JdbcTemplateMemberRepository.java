@@ -43,8 +43,7 @@ public class JdbcTemplateMemberRepository implements MemberRepository {
 	
 	//@Override
 	public Optional<Member> findByName(String name) {
-		List<Member> result = jdbcTemplate.query("select * from member where
-				name = ?", memberRowMapper(), name);
+		List<Member> result = jdbcTemplate.query("select * from member where m name = ? ", memberRowMapper(), name);
 						return result.stream().findAny();
 	}
 	

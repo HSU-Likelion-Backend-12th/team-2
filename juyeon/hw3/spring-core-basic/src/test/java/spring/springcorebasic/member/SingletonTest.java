@@ -3,7 +3,7 @@ package spring.springcorebasic.member;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import spring.springcorebasic.order.AppConfig;
+import spring.springcorebasic.AppConfig;
 
 public class SingletonTest {
     @Test

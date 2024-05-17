@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import spring.springcorebasic.member.MemberService;
-import spring.springcorebasic.order.AutoAppConfig;
+import spring.springcorebasic.AutoAppConfig;
 
 import static org.assertj.core.api.Assertions.*;
 
